@@ -1,0 +1,20 @@
+<svg ng-attr-id="{{id}}" ng-attr-width="{{width}}" ng-attr-height="{{height}}">
+
+	<defs>
+	  	<linearGradient ng-attr-id="{{grad_id_1}}" x1="0%" y1="100%" x2="0%" y2="0%">
+	  		<stop offset="0%" ng-attr-stop-color="{{background}}" stop-opacity="1" />
+	  		<stop offset="100%" stop-color="white" stop-opacity="1" />
+	  	</linearGradient>
+	    <linearGradient ng-attr-id="{{grad_id_2}}" x1="0%" y1="100%" x2="0%" y2="0%">
+	  		<stop offset="0%" stop-color="{{colour}}" stop-opacity="1" />
+	  		<stop offset="100%" stop-color="white" stop-opacity="1" />
+	  	</linearGradient>
+  	</defs>
+
+	<rect x="0" y="0" ng-attr-width="{{width}}" ng-attr-height="{{height}}" ng-attr-fill="{{fill_1}}" stroke-width="1" ng-attr-stroke="{{background}}" /> 
+	
+	<rect x="1" y="1" ng-attr-width="{{size}}" ng-attr-height="{{height-2}}" ng-attr-fill="{{fill_2}}" />
+	
+	<text ng-attr-x="{{width/2}}" ng-attr-y="{{height/2}}" ng-attr-fill="{{foreground}}" text-anchor="middle" alignment-baseline= "central">{{value}}</text>
+
+</svg>

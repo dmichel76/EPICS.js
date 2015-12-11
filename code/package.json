@@ -1,0 +1,12 @@
+{
+  "name"         : "test-app",
+  "version"      : "0.0.1",
+  "description"  : "Just testing",
+  "main"         : "server.js",
+  "author"       : "David Michel",
+  "dependencies" : {
+    "express"    : "~4.7.2",
+    "socket.io"  : "~1.3.7",
+    "epics"      : "~0.0.8"
+  }
+}
