@@ -77,7 +77,7 @@ io.on("connection", function(socket){
 
 // render static page
 //console.log("Static html page rendering...");
-app.use(express.static('public'))
+app.use(express.static('../public'))
 
 // routing for single page app
 app.get('/', function(req,res){
