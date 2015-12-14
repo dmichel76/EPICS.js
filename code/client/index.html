@@ -9,12 +9,14 @@
 
 	<!-- client code -->
 	<script src="./js/client.js"></script>
+	<script src="./js/pvcontroller.js"></script>
 	<script src="./js/led.js"></script>
 	<script src="./js/progressbar.js"></script>
 	<script src="./js/switch.js"></script>
 	<script src="./js/imageboolean.js"></script>
 	<script src="./js/imageswitch.js"></script>
 	<script src="./js/blink.js"></script>
+	<script src="./js/custom.js"></script>
 
 	<head>
 		<title>EPICS.js</title>
@@ -55,7 +57,6 @@
 		<!-- built-in directives -->	
 
 		<!-- LEDs -->	
-
 		<hr>
 		<span> LED with 3D effect </span><led pv="TEST:CALC"></led>
 		<span> LED flat style</span><led pv="TEST:BINARY" ddd="no"></led>
@@ -63,23 +64,19 @@
 		<span> blue/grey LED</span><led pv="TEST:CALC" oncolour="blue" offcolour="rgb(140,140,240)" size="30" ddd="yes"></led>
 
 		<!-- Progress bars -->
-		
 		<hr>
 		<span>Progress bars</span>
-
 		<progressbar pv="TEST:PROGRESS" ddd="no" percentage="yes"></progressbar>
 		<progressbar pv="TEST:AI" min="20" max="150" colour="green" background="rgb(200,200,200)" foreground="black" width="200" percentage="yes"></progressbar>
 		<progressbar pv="TEST:PROGRESS" ddd="no" colour="red" background="grey" height="4" width="400" text="no"></progressbar>
 
 		<!-- input -->
-
 		<hr>
 		<span>Image boolean indicator</span>
 		<imageboolean width="50" height="80" pv="TEST:BLINK" onimage="./img/lightbulb_on.png" offimage="./img/lightbulb_off.png"></imageboolean>
 		<imageboolean width="50" height="50" pv="TEST:BLINK" onimage="./img/power_on.png" offimage="./img/power_off.png"></imageboolean>
 
 		<!-- switches -->
-		
 		<hr>
 		<span>Image boolean switches</span>
 		<imageswitch pv="TEST:BINARY" onimage="./img/On_1.png" offimage="./img/Off_1.png"></imageswitch>

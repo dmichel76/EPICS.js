@@ -1,14 +1,17 @@
 // setup
-console.log("Staring EPICS.js webserver...");
 var express = require('express');
 var app = express();
 var server = require("http").createServer(app);
 var io = require("socket.io")(server);
 var epics = require('epics');
-
-// read config file
+var yargs = require('yargs').argv;
 var fs = require('fs');
-var array = fs.readFileSync('test.pvs').toString().split("\n");
+
+console.log("Staring EPICS.js webserver...");
+
+// read pvs from config file
+file = !yargs.pvs? __dirname + '/default.pvs':yargs.pvs;
+array = fs.readFileSync(file).toString().split("\n");
 
 // monitoring PVs
 console.log("Monitoring PVs:");
@@ -59,7 +62,6 @@ function pvobj(name, val) {
 	return JSON.parse('{"name": "' + name + '", "value": "' + val + '"}');
 }
 
-
 // when a client connects...
 io.on("connection", function(socket){
 
@@ -77,7 +79,7 @@ io.on("connection", function(socket){
 
 // render static page
 //console.log("Static html page rendering...");
-app.use(express.static('../client'))
+app.use(express.static(__dirname + '/../client'))
 
 // routing for single page app
 app.get('/', function(req,res){
@@ -88,4 +90,3 @@ app.get('/', function(req,res){
 server.listen(8080, function(){
     console.log('Magic happens at http://%s:%s', this.address().address, this.address().port);
 });
-
