@@ -1,0 +1,28 @@
+{
+  "name": "epics.js",
+  "homepage": "https://github.com/dmichel76/epics.js",
+  "authors": [
+    "David Michel <dmichel76@googlemail.com>"
+  ],
+  "description": "",
+  "main": "client.js",
+  "moduleType": [],
+  "keywords": [
+    "epics"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Snap.svg": "snap.svg#~0.4.1",
+    "angular": "angularjs#~1.4.8",
+    "socket.io": "~1.3.7",
+    "svg.js": "~2.2.4"
+  }
+}
