@@ -21,4 +21,5 @@ where the ```file``` contains a list of the PVs that the node.js server listens 
 Then point your browser to port 8080:
 
 ![screenshot](screenshot.png?raw=true "screenshot")
+<img src="screenshot.png" width="200">
 
