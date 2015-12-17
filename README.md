@@ -20,5 +20,5 @@ where the ```file``` contains a list of the PVs that the node.js server listens 
 
 ##Screenshot
 
-<img src="screenshot.png" align="center" width="600">
+<p align="center"><img src="screenshot.png"  width="600"></p>
 
