@@ -16,6 +16,8 @@ start the server:
 node server/server.js --pvs=file_containing_pvs
 ```
 
+where the ```file``` contains a list of the PVs that the node.js server listens to and broacasts to the browser. By default, the server will look for the file ```default.pvs``` in the server directory if no file is specified.
+
 Then point your browser to port 8080:
 
 ![screenshot](screenshot.png?raw=true "screenshot")
