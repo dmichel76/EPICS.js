@@ -87,6 +87,7 @@ app.get('/', function(req,res){
 });
 
 // start server
-server.listen(8080, function(){
+port = !yargs.port? "8080":yargs.port;
+server.listen(port, function(){
     console.log('Magic happens at http://%s:%s', this.address().address, this.address().port);
 });
