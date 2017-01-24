@@ -33,11 +33,14 @@ import TextUpdate from './textUpdate.js'
 <TextUpdate pv="TEST:PROGRESS" background="black" fontcolor="white" width="150" pretext="Processing " posttext="%"/>
  ```
 
-## Architecture
-The server is written for Node.js and depends on https://github.com/RobbieClarken/node-epics to do the communication with EPICS IOCs.
-Socket.io is then used expose PVs to the client/browser via a json object. React.js is used for the front-end doing the socket.io communication with the server and providing basics built-in widgets. 
+## How it works
 
-## Server
+#### Server
+
+The server is written for Node.js and depends on https://github.com/RobbieClarken/node-epics to do the communication with EPICS IOCs.
+Socket.io is then used expose PVs to the client/browser via a json object. 
+The server will monitor how many clients are looking at the same PV and make sure only one socket connection is established per PV on the server side. So the client has to 'register' its PV first to tell the server to start monitoring that PV. When no client is looking at a given PV, the monitoring is closed.
+
 Assuming you have EPICS installed and the environment variable ```NODE_EPICS_LIBCA``` is set to where the Channel Access library is installed, all you have to do is install the dependencies and run it.
 
 ```
@@ -45,8 +48,9 @@ npm install
 node server.js
 ```
 
-## Client
-Similarly to the server, you first have to install the dependencies (React, Socket.io, ES6 support, babel) with ```npm install```.
+#### Client
+React.js is used for the front-end doing the socket.io communication with the server and providing basics built-in widgets. 
+You first have to install the dependencies (React, Socket.io, ES6 support, babel) with ```npm install```.
 
 To build the app:
 ```
