@@ -6,7 +6,6 @@ A platform for developing web UIs for EPICS IOCs using Node.JS, Socket.io and RE
 
 ## Example widgets
 
-#### LED
 ```
 import Led from './led.js'
 
@@ -16,22 +15,6 @@ import Led from './led.js'
 <Led pv="TEST:BLINK" size="105" strokecolor="black" strokecolor2="grey" strokewidth="15"/>
 <Led pv="TEST:BLINK" size="70" strokecolor="grey" oncolor="yellow" offcolor="orange"/>
 ```
-
-#### Tank
-```
-import Tank from './tank.js'
-
-<Tank pv="TEST:VALUE" scale="yes" scalestep="10" scalefontsize="10" scalecolor="red" text="${pv}" fontcolor="white" fontsize="25"/>
-<Tank pv="TEST:ANOTHERVALUE" scale="yes" scalestep="40" minimum="-100" maximum="100" foreground="red" background="lightgrey"/>
-```
-
-#### Text Update
-```
-import TextUpdate from './textUpdate.js'
-
-<TextUpdate pv="TEST:ASTRING width="100" pretext="state is " "/>
-<TextUpdate pv="TEST:PROGRESS" background="black" fontcolor="white" width="150" pretext="Processing " posttext="%"/>
- ```
 
 ## How it works
 
