@@ -30,7 +30,7 @@ function register(client, pv) {
     pvSocket[pv].connect(function () { pvSocket[pv].monitor() })
   }
 
-  console.log('Monitoring PV: ' + pv + " for " + pvMonitors[pv] + " client(s)");
+  console.log('Monitoring PV: ' + pv + " for " + pvMonitors[pv] + " client(s)")
 }
 
 
@@ -79,16 +79,16 @@ io.on("connection", function(socket) {
     register(socket.id, pv)
   })
 
-});
+})
 
 
 // serves static html
-app.use(express.static(__dirname + '/client_socket'))
+app.use(express.static(__dirname + '/static'))
 app.get('/', function (req, res) {
   res.render("index.html")
 })
 
 // start server
-server.listen(8081, 'localhost', function() {
-    console.log('Magic happens at http://%s:%s', this.address().address, this.address().port);
-});
+server.listen(8081, function() {
+    console.log('Magic happens at http://%s:%s', require('my-local-ip')(), this.address().port)
+})
