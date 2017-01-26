@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom'
 
 import EPICSComponent from './epicscomponent.js'
 
-import io from 'socket.io-client'
-let socket = io('http://localhost:8081/')
-
 module.exports = class EPICSCanvas extends EPICSComponent {
 
   constructor(props){

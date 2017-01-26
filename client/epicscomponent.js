@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import io from 'socket.io-client'
-let socket = io('http://localhost:8081/')
+let socket = io(window.location.host)
 
 module.exports = class EPICSComponent extends React.Component {
 
@@ -13,7 +13,6 @@ module.exports = class EPICSComponent extends React.Component {
     this.bbcolor = (typeof this.props.bbcolor == "undefined") ? "purple" : this.props.bbcolor
     this.bbstrokewidth = (typeof this.props.bbstrokewidth == "undefined") ? 5 : this.props.bbstrokewidth
     this.state = { pvvalue: '' }
-
   }
 
   componentDidMount() {
