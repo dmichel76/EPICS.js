@@ -6,10 +6,15 @@ var app = express()
 var server = require('http').createServer(app)
 var io = require('socket.io')(server)
 var epics = require('epics')
+var stringify = require('stringify-object');
+
+var middleware = require('socketio-wildcard')();
+io.use(middleware);
 
 var pvSocket = {} // list of Sockets of CA channels
 var pvClients = {} // list of clients and theirs PVs
 var pvMonitors = {} // list of pvs and the # of clients using them.
+var pvList = [] // just a list of the monitored pvs
 
 // Registering client
 // so we know what PVs are being channeled by this client.
@@ -26,9 +31,16 @@ function register(client, pv) {
     pvMonitors[pv] = 1
 
     pvSocket[pv] = new epics.Channel(pv)
-    pvSocket[pv].on('value', function (data) { io.emit(pv, {'pv': pv, 'val': data}) })
+    pvSocket[pv].on('value', function (data) { 
+      json = {'pv': pv, 'val': data}
+      //console.log("updating: " + stringify(json))
+      io.emit(pv, json) 
+    })
     pvSocket[pv].connect(function () { pvSocket[pv].monitor() })
+
   }
+
+  pvList.push(pv)
 
   console.log('Monitoring PV: ' + pv + " for " + pvMonitors[pv] + " client(s)")
 }
@@ -48,6 +60,8 @@ function unregister(client) {
         pvSocket[pv].disconnect()
         delete pvSocket[pv]
         delete pvMonitors[pv]
+        pvList.splice(pvList.indexOf(pv), 1)
+
         console.log("Stop monitoring PV: " + pv)
       }
 
@@ -78,6 +92,20 @@ io.on("connection", function(socket) {
   socket.on('register', function(pv){
     register(socket.id, pv)
   })
+
+
+  // deal with messages from client
+  socket.on('*', function(packet){
+
+    pvname = packet.data[0]
+    pv = packet.data[1]
+
+    if (pvList.indexOf(pvname)==1) { 
+      //console.log("writing: " + stringify(pv))
+      pvSocket[pvname].put(pv.val)
+    }
+  })
+
 
 })
 
